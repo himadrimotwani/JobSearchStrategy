@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<!-- career-ops-template
+name: Clean ATS-Optimized 1-Page Software Engineering Resume
+version: 1.0.0
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Resume - [Your Full Name]</title>
+<style>
+  :root {
+    --text: #111111;
+    --muted: #333333;
+    --rule: #111111;
+    --page-margin: 0.5in;
+  }
+
+  @page { size: letter; margin: var(--page-margin); }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-variant-ligatures: none;
+    font-feature-settings: "liga" 0, "clig" 0, "dlig" 0;
+  }
+
+  html {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    font-family: "Times New Roman", Times, serif;
+    color: var(--text);
+    background: #ffffff;
+    font-size: 11.5px;
+    line-height: 1.12;
+  }
+
+  .page {
+    max-width: 8.5in;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .header h1 {
+    font-size: 24px;
+    line-height: 1.05;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .contact-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0 8px;
+    font-size: 11px;
+    line-height: 1.2;
+    color: var(--text);
+  }
+
+  .contact-row a {
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .separator {
+    color: #777777;
+  }
+
+  .section {
+    margin-bottom: 6px;
+  }
+
+  .section-title {
+    font-size: 14.5px;
+    line-height: 1.05;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    color: var(--text);
+    border-bottom: 1.5px solid var(--rule);
+    padding-bottom: 1px;
+    margin-bottom: 5px;
+  }
+
+  .job {
+    margin-bottom: 5px;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .job-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 140px;
+    align-items: baseline;
+    column-gap: 16px;
+  }
+
+  .job-company {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .job-period {
+    font-size: 11px;
+    color: var(--text);
+    white-space: nowrap;
+    text-align: right;
+  }
+
+  .job-role {
+    display: inline;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .job-location {
+    display: block;
+    float: right;
+    width: 140px;
+    font-size: 11px;
+    color: var(--text);
+    text-align: right;
+  }
+
+  .job ul {
+    clear: both;
+    margin-top: 2px;
+    padding-left: 14px;
+  }
+
+  .job li {
+    margin-bottom: 1.5px;
+    padding-left: 1px;
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+  .project {
+    margin-bottom: 5px;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .project-title {
+    display: inline;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .project-title a {
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .project-badge {
+    font-size: 10.5px;
+    font-style: italic;
+    color: var(--muted);
+    margin-left: 4px;
+  }
+
+  .project-desc {
+    margin-top: 1px;
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+  .project-tech {
+    margin-top: 1px;
+    font-size: 10.5px;
+    color: var(--muted);
+  }
+
+  .edu-item {
+    margin-bottom: 4px;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .edu-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 140px;
+    align-items: baseline;
+    column-gap: 16px;
+  }
+
+  .edu-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .edu-org {
+    display: block;
+    font-size: 11.5px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--text);
+  }
+
+  .edu-year {
+    font-size: 11px;
+    color: var(--text);
+    white-space: nowrap;
+    text-align: right;
+  }
+
+  .edu-desc {
+    font-size: 11px;
+    color: var(--text);
+  }
+
+  .skills-grid {
+    display: block;
+  }
+
+  .skill-item {
+    margin-bottom: 1.5px;
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+  .skill-category {
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  strong {
+    font-weight: 700;
+  }
+
+  .header,
+  .section-title,
+  .job-company,
+  .job-role,
+  .project-title,
+  .edu-title {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>[YOUR FULL NAME]</h1>
+    <div class="contact-row">
+      <a href="tel:+10000000000">+1 (000) 000-0000</a>
+      <span class="separator">|</span>
+      <a href="mailto:your.email@example.com">your.email@example.com</a>
+      <span class="separator">|</span>
+      <a href="https://linkedin.com/in/yourprofile">linkedin.com/in/yourprofile</a>
+      <span class="separator">|</span>
+      <a href="https://github.com/yourhandle">github.com/yourhandle</a>
+      <span class="separator">|</span>
+      <span>[City, State]</span>
+    </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="section">
+    <div class="section-title">Education</div>
+    <div class="education-body">
+      <div class="edu-item">
+        <div class="edu-header">
+          <div class="edu-title">Master of Science in Computer Science <span class="edu-org">[Your University Name]</span></div>
+          <div class="edu-year">[Month Year] – [Month Year]</div>
+        </div>
+        <div class="edu-desc">[City, State] | GPA: [3.X / 4.0]</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-header">
+          <div class="edu-title">Bachelor of Science in Computer Science <span class="edu-org">[Your Undergraduate University]</span></div>
+          <div class="edu-year">[Month Year] – [Month Year]</div>
+        </div>
+        <div class="edu-desc">[City, State] | GPA: [3.X / 4.0]</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TECHNICAL SKILLS -->
+  <div class="section">
+    <div class="section-title">Technical Skills</div>
+    <div class="skills-body">
+      <div class="skills-grid">
+        <div class="skill-item"><span class="skill-category">Languages: </span>Python, C++, Java, JavaScript, TypeScript, Go, SQL, Bash</div>
+        <div class="skill-item"><span class="skill-category">Frameworks &amp; Libraries: </span>PyTorch, TensorFlow, FastAPI, Django, React, Node.js, Next.js, OpenCV, Scikit-learn</div>
+        <div class="skill-item"><span class="skill-category">Cloud &amp; DevOps: </span>Docker, Kubernetes, AWS (S3, EC2, Lambda), GCP, CI/CD GitHub Actions, Linux, Nginx</div>
+        <div class="skill-item"><span class="skill-category">Data &amp; Systems: </span>PostgreSQL, Redis, MongoDB, Elasticsearch, Kafka, REST APIs, GraphQL, Distributed Systems</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WORK EXPERIENCE -->
+  <div class="section">
+    <div class="section-title">Professional Experience</div>
+    <div class="experience-body">
+
+      <!-- Job 1 -->
+      <div class="job">
+        <div class="job-header">
+          <span class="job-company">[Company Name]</span>
+          <span class="job-period">[Month Year] – Present</span>
+        </div>
+        <div class="job-role">[Software Engineer / AI Engineering Intern]</div>
+        <div class="job-location">[City, State / Remote]</div>
+        <ul>
+          <li>Engineered scalable backend microservices in Python and FastAPI, handling <strong>10,000+ daily requests</strong> with sub-100ms response latency.</li>
+          <li>Optimized PostgreSQL database schemas and complex analytical queries with indexing and Redis caching, cutting retrieval time by <strong>40%</strong>.</li>
+          <li>Architected automated CI/CD deployment pipelines on Docker and Kubernetes, reducing release deployment cycle duration from 45 minutes to <strong>8 minutes</strong>.</li>
+        </ul>
+      </div>
+
+      <!-- Job 2 -->
+      <div class="job">
+        <div class="job-header">
+          <span class="job-company">[Previous Company Name]</span>
+          <span class="job-period">[Month Year] – [Month Year]</span>
+        </div>
+        <div class="job-role">[Software Engineering Intern]</div>
+        <div class="job-location">[City, State / Remote]</div>
+        <ul>
+          <li>Designed and implemented full-stack dashboard features using React, TypeScript, and Node.js, improving daily user engagement by <strong>25%</strong>.</li>
+          <li>Integrated third-party RESTful APIs and webhook listeners with resilient exponential backoff retry mechanisms, achieving <strong>99.9%</strong> ingestion reliability.</li>
+          <li>Wrote comprehensive unit and integration test suites with PyTest and Jest, elevating overall code coverage from 68% to <strong>89%</strong>.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="section">
+    <div class="section-title">Technical Projects</div>
+    <div class="projects-body">
+
+      <!-- Project 1 -->
+      <div class="project">
+        <div class="project-title"><a href="https://github.com/yourhandle/project-one">[Distributed Multi-Agent LLM Orchestration Engine]</a><span class="project-badge">Python, FastAPI, PyTorch, Docker</span></div>
+        <div class="project-desc">Built an autonomous multi-agent platform coordinating asynchronous agent interactions with tool execution and vector search, evaluating <strong>1,000+ real-time concurrent tasks</strong> with structured JSON schema outputs.</div>
+        <div class="project-tech">Technologies: Python, LangChain, ChromaDB, FastAPI, Docker, WebSocket</div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project">
+        <div class="project-title"><a href="https://github.com/yourhandle/project-two">[High-Throughput Stream Processing Pipeline]</a><span class="project-badge">Go, Kafka, PostgreSQL, Redis</span></div>
+        <div class="project-desc">Engineered an event-driven data streaming pipeline processing <strong>5,000+ events/sec</strong> with zero data loss; implemented consumer group partitioning, dead-letter queues, and real-time anomaly alerting.</div>
+        <div class="project-tech">Technologies: Go, Apache Kafka, Redis, PostgreSQL, Prometheus, Grafana</div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
