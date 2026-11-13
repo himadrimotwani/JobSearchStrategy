@@ -1,0 +1,16 @@
+# Runtime logs & process IDs
+*.log
+outputs/outreach/dispatcher.log
+outputs/outreach/dispatcher.pid
+
+# Daily staged batches & run status (generated during execution)
+outputs/outreach/202*
+outputs/outreach/outreach-batch-staged.json
+outputs/outreach/run-status.json
+
+# Cache & Environment
+__pycache__/
+*.py[cod]
+*$py.class
+.DS_Store
+.env

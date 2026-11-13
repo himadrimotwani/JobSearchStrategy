@@ -1,0 +1,12 @@
+{
+  "pulses_per_day": 4,
+  "per_pulse_target": 75,
+  "daily_target": 300,
+  "pulse_hours_est": [
+    9,
+    12,
+    15,
+    18
+  ],
+  "triggered_slots": []
+}
