@@ -1,7 +1,7 @@
 {
   "pulses_per_day": 4,
-  "per_pulse_target": 75,
-  "daily_target": 300,
+  "per_pulse_target": 50,
+  "daily_target": 200,
   "pulse_hours_est": [
     9,
     12,

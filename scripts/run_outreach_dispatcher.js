@@ -42,7 +42,7 @@ const workspaceRoot = process.env.WORKSPACE_ROOT || path.resolve(__dirname, '..'
 const ledgerPath = path.join(workspaceRoot, 'outputs/outreach/outreach-ledger.json');
 const logFile = path.join(workspaceRoot, 'outputs/outreach/dispatcher.log');
 const pulseTrackerPath = path.join(workspaceRoot, 'outputs/outreach/pulse-tracker.json');
-const PULSE_HOURS_EST = [8, 11, 14, 17, 20, 23];
+const PULSE_HOURS_EST = [9, 12, 15, 18];
 
 function getEasternDateAndHour() {
   const parts = new Intl.DateTimeFormat('en-US', {
@@ -75,13 +75,29 @@ function checkAndTriggerScheduledPulse() {
 
     if (tracker.triggered_slots.includes(slotKey)) return;
 
-    log(`>>> Scheduled 6x-Daily Pulse triggered for EST slot [${slotKey}] (75 leads target)`);
+    log(`>>> Scheduled 4x-Daily Pulse triggered for EST slot [${slotKey}] (50 leads target)`);
     acquireSleepAssertion();
-    const output = execSync(`/opt/homebrew/bin/python3 scripts/stage_next_pulse.py --count 75 --date ${dateStr}`, {
-      cwd: workspaceRoot,
-      encoding: 'utf8',
-      timeout: 240000
-    });
+    let output = '';
+    try {
+      output = execSync(`/opt/homebrew/bin/python3 scripts/stage_next_pulse.py --count 50 --date ${dateStr}`, {
+        cwd: workspaceRoot,
+        encoding: 'utf8',
+        timeout: 240000
+      });
+      if (output.includes('Warning: No fresh uncontacted leads')) {
+        output += ' | Fallback to multi-source harvester: ' + execSync(`/opt/homebrew/bin/python3 scripts/sourcing/harvest_leads.py --source all --count 50 --date ${dateStr}`, {
+          cwd: workspaceRoot,
+          encoding: 'utf8',
+          timeout: 240000
+        });
+      }
+    } catch (e) {
+      output = execSync(`/opt/homebrew/bin/python3 scripts/sourcing/harvest_leads.py --source all --count 50 --date ${dateStr}`, {
+        cwd: workspaceRoot,
+        encoding: 'utf8',
+        timeout: 240000
+      });
+    }
     log(`Pulse staging result [${slotKey}]: ${output.trim().replace(/\n/g, ' | ')}`);
 
     // Record slot after staging attempt so transient errors can retry
@@ -134,13 +150,16 @@ function getActiveStagedFile() {
       } catch (e) {}
     }
   }
-  // Default to newest existing
-  if (dateDirs.length > 0) {
-    return {
-      stagedPath: path.join(dateDirs[0], 'outreach-batch-staged.json'),
-      dateDir: dateDirs[0],
-      dateStr: path.basename(dateDirs[0])
-    };
+  // Default to newest existing staged file that actually exists
+  for (const d of dateDirs) {
+    const stagedPath = path.join(d, 'outreach-batch-staged.json');
+    if (fs.existsSync(stagedPath)) {
+      return {
+        stagedPath,
+        dateDir: d,
+        dateStr: path.basename(d)
+      };
+    }
   }
   return null;
 }

@@ -163,10 +163,10 @@ def harvest_and_stage(source="all", count=75, date_str=None, append=True):
         "date": date_str,
         "total_staged": len(combined),
         "confirmed_sends": sum(1 for r in combined if r.get("status") == "SENT"),
-        "target_new_emails_per_day": 450,
-        "daily_target": 450,
-        "per_run_target": 75,
-        "pulses_per_day": 6,
+        "target_new_emails_per_day": 200,
+        "daily_target": 200,
+        "per_run_target": 50,
+        "pulses_per_day": 4,
         "status": "STAGED_READY",
         "updated_at": datetime.now(timezone.utc).isoformat(),
         "records": combined
@@ -182,7 +182,7 @@ def harvest_and_stage(source="all", count=75, date_str=None, append=True):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Multi-Source Enterprise Lead Harvester")
     parser.add_argument("--source", default="all", choices=["all", "vc", "github", "yc"], help="Source to harvest from")
-    parser.add_argument("--count", type=int, default=75, help="Number of verified leads to stage")
+    parser.add_argument("--count", type=int, default=50, help="Number of verified leads to stage")
     parser.add_argument("--date", default=None, help="Target date YYYY-MM-DD")
     parser.add_argument("--no-append", action="store_true", help="Overwrite instead of appending")
     args = parser.parse_args()

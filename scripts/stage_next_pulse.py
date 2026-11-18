@@ -545,11 +545,11 @@ Himadri Motwani"""
         "date": date_str,
         "total_staged": len(combined),
         "confirmed_sends": sum(1 for r in combined if r.get("status") == "SENT"),
-        "target_new_emails_per_day": 450,
-        "daily_target": 450,
-        "per_run_target": 75,
-        "pulses_per_day": 6,
-        "pulse_hours_est": [8, 11, 14, 17, 20, 23],
+        "target_new_emails_per_day": 200,
+        "daily_target": 200,
+        "per_run_target": 50,
+        "pulses_per_day": 4,
+        "pulse_hours_est": [9, 12, 15, 18],
         "status": "STAGED_READY",
         "updated_at": datetime.now(timezone.utc).isoformat(),
         "records": combined
@@ -564,14 +564,14 @@ Himadri Motwani"""
             json.dump({
                 "date": date_str,
                 "timezone": "America/New_York",
-                "per_run_target": 75,
-                "daily_target": 450,
-                "pulses_per_day": 6,
+                "per_run_target": 50,
+                "daily_target": 200,
+                "pulses_per_day": 4,
                 "daily_confirmed_outreach_sends": 0,
                 "daily_confirmed_qualifying_sends": 0,
                 "confirmed_sends": 0,
                 "sent_count": 0,
-                "shortfall": 450,
+                "shortfall": 200,
                 "sends_today": [],
                 "status": "IN_PROGRESS",
                 "updated_at": datetime.now(timezone.utc).isoformat()
@@ -586,7 +586,7 @@ Himadri Motwani"""
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--count", type=int, default=75)
+    parser.add_argument("--count", type=int, default=50)
     parser.add_argument("--date", type=str, default=datetime.now().strftime("%Y-%m-%d"))
     parser.add_argument("--force", action="store_true")
     args = parser.parse_args()
